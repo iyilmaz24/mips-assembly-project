@@ -1,4 +1,5 @@
 .data
+clockPrompt: .asciiz "Please enter in a time: "
 morningStr: .asciiz "It is morning"
 noonStr: .asciiz "It is noon"
 afternoonStr: .asciiz "It is afternoon"
@@ -7,6 +8,10 @@ afternoonStr: .asciiz "It is afternoon"
 .globl main
 
 main:
+	li $v0,4               # 4 = print string
+	la $a0,clockPrompt      
+	syscall
+
 	li $v0, 5              # 5 = read integer
 	syscall   
 	move $t1,$v0           # Copy time from input into $t1
